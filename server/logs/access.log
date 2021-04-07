@@ -28,3 +28,4 @@
 ::1 - - [07/Apr/2021:18:01:04 +0000] "DELETE /api/category/delete HTTP/1.1" 201 32 "-" "PostmanRuntime/7.26.10"
 ::1 - - [07/Apr/2021:18:02:06 +0000] "DELETE /api/category/delete HTTP/1.1" 400 34 "-" "PostmanRuntime/7.26.10"
 ::1 - - [07/Apr/2021:18:05:12 +0000] "DELETE /api/category/delete HTTP/1.1" 400 32 "-" "PostmanRuntime/7.26.10"
+::1 - - [07/Apr/2021:18:05:32 +0000] "DELETE /api/category/delete HTTP/1.1" 201 34 "-" "PostmanRuntime/7.26.10"
