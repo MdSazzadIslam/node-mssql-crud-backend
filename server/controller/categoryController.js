@@ -13,7 +13,7 @@ exports.getAll = async (req, res) => {
 
 exports.getById = async (req, res) => {
   try {
-    console.log(req.params.id);
+    
     const result = await categoryService.getById(req.params.id);
     res.json(result.recordsets);
   } catch (error) {
@@ -26,12 +26,12 @@ exports.createCategory = async (req, res) => {
   try {
     const result = await categoryService.createCategory(req.body);
 
-    if (result) {
+    if (result.returnValue === 1) {
       res.status(201).json({
-        message: "Inserted Successfully",
+        message: result.output.message,
       });
     } else {
-      return res.status(400).send({ message: "Something went wrong" });
+      return res.status(400).send({ message: result.output.message });
     }
   } catch (error) {
     res.status(500).json({ message: "Server error" });
@@ -40,14 +40,14 @@ exports.createCategory = async (req, res) => {
 
 exports.deleteCategory = async (req, res) => {
   try {
-    const result = await categoryService.deleteCategory(req.body);
-
-    if (result) {
+    const result = await categoryService.deleteCategory(req.body.id);
+   
+    if (result.returnValue === 1) {
       res.status(201).json({
-        message: "Deleted Successfully",
+        message: result.output.message,
       });
     } else {
-      return res.status(400).send({ message: "Something went wrong" });
+      return res.status(400).send({ message: result.output.message });
     }
   } catch (error) {
     res.status(500).json({ message: "Server error" });
@@ -58,12 +58,12 @@ exports.updateCategory = async (req, res) => {
   try {
     const result = await categoryService.updateCategory(req.body);
 
-    if (result) {
+    if (result.returnValue === 1) {
       res.status(201).json({
-        message: "Updated Successfully",
+        message: result.output.message,
       });
     } else {
-      return res.status(400).send({ message: "Something went wrong" });
+      return res.status(400).send({ message: result.output.message });
     }
   } catch (error) {
     res.status(500).json({ message: "Server error" });

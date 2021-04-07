@@ -32,10 +32,10 @@ class categoryService {
       const pool = await poolPromise;
       return await pool
         .request()
-        .input("categoryid", sql.Int, data.categoryId)
-        .input("categoryname", sql.VarChar, data.categoryName)
-        .input("activestatus", sql.Char, data.activeStatus)
-        .input("updateby", sql.Char, "netsazzad@gmail.com")
+        .input("categoryId", sql.Int, data.categoryId)
+        .input("categoryName", sql.VarChar, data.categoryName)
+        .input("activeStatus", sql.Char, data.activeStatus)
+        .input("updateBy", sql.Char, "netsazzad@gmail.com")
         .output("message", sql.Char, "")
         .execute("pro_category_save");
     } catch (err) {
@@ -43,13 +43,13 @@ class categoryService {
     }
   }
 
-  static async deleteCategory(categoryid) {
+  static async deleteCategory(id) {
     try {
       const pool = await poolPromise;
       return await pool
         .request()
-        .input("categoryid", sql.Int, categoryid)
-        .output("message", sql.Char, "")
+        .input("categoryId", sql.Int, id)
+        .output("message", sql.VarChar, "")
         .execute("pro_category_delete");
     } catch (err) {
       console.log(err);
@@ -61,11 +61,11 @@ class categoryService {
       const pool = await poolPromise;
       return await pool
         .request()
-        .input("categoryid", sql.Int, data.categoryId)
-        .input("categoryname", sql.VarChar, data.categoryName)
-        .input("activestatus", sql.Char, data.activeStatus)
-        .input("updateby", sql.Char, "netsazzad@gmail.com")
-        .output("message", sql.Char, "")
+        .input("categoryId", sql.Int, data.categoryId)
+        .input("categoryName", sql.VarChar, data.categoryName)
+        .input("activeStatus", sql.Char, data.activeStatus)
+        .input("updateBy", sql.Char, "netsazzad@gmail.com")
+        .output("message", sql.VarChar, "")
         .execute("pro_category_save");
     } catch (err) {
       console.log(err);

@@ -11,6 +11,7 @@ const config = {
     trustedConnection: true,
   },
 };
+
 const poolPromise = new sql.ConnectionPool(config)
   .connect()
   .then((pool) => {
@@ -23,18 +24,3 @@ module.exports = {
   sql,
   poolPromise,
 };
-
-/* exports.db = function () {
-  try {
-    var dbConfig = {
-      user: "sa", // SQL Server Login
-      password: "system", // SQL Server Password
-      server: "DESKTOP-I5BV89K", // SQL Server Server name
-      database: "bmrsecom", // SQL Server Database name
-    };
-    return dbConfig;
-  } catch (error) {
-    console.error("Connection fail", error);
-    process.exit(1);
-  }
-}; */

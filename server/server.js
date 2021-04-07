@@ -4,14 +4,21 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
+const fs = require('fs')
+const path = require('path')
 
 const categoryRoute = require("./routes/categoryRoute");
  
 const app = express();
+app.use(cors());
 app.use(logger("dev"));
 app.use(bodyParser.json()); // parse requests of content-type - application/json
-app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true })); // when you test through POSTMAN please send data as [x-www-form-urlencoded]
+
+// create a write stream (in append mode)
+var accessLogStream = fs.createWriteStream(path.join(__dirname, '/logs/access.log'), { flags: 'a' })
+// setup the logger
+app.use(logger('combined', { stream: accessLogStream }))
 
 //For checking purpose whether API is respoding or not
 app.get("/", (req, res) => {
